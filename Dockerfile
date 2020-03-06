@@ -218,7 +218,7 @@ COPY --from=swig /usr/local/ /usr/local/
 COPY --from=autotools /usr/local/ /usr/local/
 COPY --from=hwloc /usr/local/ /usr/local/
 COPY --from=ffi /usr/local/ /usr/local/
-RUN find /usr/local -type f -exec sh -c "file -b {} | grep -Eq '^ELF.*, not stripped' && strip {}" \;
+RUN find /usr/local ! -name '*.o' -type f -exec sh -c "file -b {} | grep -Eq '^ELF.*, not stripped' && strip {}" \;
 
 # Final stage
 FROM gcc-curl as final
