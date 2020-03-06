@@ -188,11 +188,11 @@ RUN make install
 
 #hwloc
 FROM gcc-curl as hwloc
-RUN curl -kLO https://download.open-mpi.org/release/hwloc/v2.1/hwloc-2.1.0.tar.bz2
+RUN curl -kLO https://download.open-mpi.org/release/hwloc/v1.11/hwloc-1.11.13.tar.bz2
 RUN sha256sum *.tar.*
-RUN echo "19429752f772cf68321196970ffb10dafd7e02ab38d2b3382b157c78efd10862 " *.tar.* | sha256sum -c -
+RUN echo "a4494b7765f517c0990d1c7f09d98cb87755bb6b841e4e2cbfebca1b14bac9c8 " *.tar.* | sha256sum -c -
 RUN tar xf *.tar.*
-WORKDIR hwloc-2.1.0
+WORKDIR hwloc-1.11.13
 RUN ./configure
 RUN make -j$(nproc)
 RUN make install
