@@ -223,3 +223,4 @@ RUN find /usr/local ! -name '*.o' -type f -exec sh -c "file -b {} | grep -Eq '^E
 # Final stage
 FROM gcc-curl as final
 COPY --from=allinone-stripped /usr/local /usr/local
+RUN ldconfig
