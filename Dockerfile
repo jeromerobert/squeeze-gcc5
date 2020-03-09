@@ -32,6 +32,8 @@ RUN make -j $(nproc)
 RUN make install
 RUN rm /usr/local/lib/*.a
 RUN strip -p /usr/local/lib/* /usr/local/bin/* || true
+RUN ldconfig
+RUN mkdir -p /etc/ssl/certs && curl -kL https://curl.haxx.se/ca/cacert.pem > /etc/ssl/certs/ca-certificates.crt
 
 FROM dev as gcc
 RUN apt-get install -y --no-install-recommends --force-yes g++ curl
