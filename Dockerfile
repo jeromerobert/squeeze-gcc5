@@ -1,10 +1,10 @@
 FROM debian:squeeze AS base
 RUN echo deb http://archive.debian.org/debian/ squeeze contrib main non-free > /etc/apt/sources.list
 RUN apt-get update && apt-get install --force-yes -y --no-install-recommends \
-    bzip2 make m4 file pkg-config libexpat1-dev zlib1g-dev gettext \
-    openssh-client rsync libbz2-dev libreadline-dev libglu1-mesa-dev man xz-utils patch \
+    bzip2 make m4 file pkg-config libexpat1-dev zlib1g-dev gettext vim-tiny \
+    net-tools gawk rsync libbz2-dev libreadline-dev libglu1-mesa-dev man xz-utils patch \
     libxt-dev libxtst6 libxrender1 libxi6 unzip libc6=2.11.3-4 libc-bin=2.11.3-4 perl-modules \
-    && apt-get clean && rm -rf /var/lib/apt/lists/* && rm -rf /usr/share/locale
+    && apt-get clean && apt-get remove -y --purge mawk && rm -rf /var/lib/apt/lists/* && rm -rf /usr/share/locale
 
 FROM base as dev
 RUN apt-get update
