@@ -11,13 +11,13 @@ RUN apt-get update
 
 FROM dev AS curl
 RUN apt-get install -y --no-install-recommends --force-yes gcc curl
-RUN curl -kO https://www.openssl.org/source/openssl-1.1.1c.tar.gz
+RUN curl -kO https://www.openssl.org/source/openssl-1.1.1d.tar.gz
 RUN curl -LO http://deb.debian.org/debian/pool/main/c/curl/curl_7.68.0.orig.tar.gz
 
 RUN sha256sum openssl*.tar.gz
-RUN echo "f6fb3079ad15076154eda9413fed42877d668e7069d9b87396d0804fdb3f4c90 " openssl*.tar.gz | sha256sum -c -
+RUN echo "1e3a91bc1f9dfce01af26026f856e064eab4c8ee0a8f457b5ae30b40b8b711f2 " openssl*.tar.gz | sha256sum -c -
 RUN tar xf openssl*.tar.gz
-WORKDIR openssl-1.1.1c
+WORKDIR openssl-1.1.1d
 RUN ./config --prefix=/usr/local --openssldir=/usr/local shared
 RUN make -j$(nproc)
 RUN make install_sw install_ssldirs
