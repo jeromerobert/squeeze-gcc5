@@ -210,6 +210,17 @@ RUN ./configure --disable-static
 RUN make -j$(nproc)
 RUN make install
 
+# openssh
+FROM gcc-curl as openssh
+RUN curl -kLO https://ftp.fr.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-8.2p1.tar.gz
+RUN sha256sum *.tar.*
+RUN echo "43925151e6cf6cee1450190c0e9af4dc36b41c12737619edff8bcebdff64e671 " *.tar.* | sha256sum -c -
+RUN tar xf *.tar.*
+WORKDIR openssh-8.2p1
+RUN ./configure
+RUN make -j$(nproc)
+RUN make install
+
 # Intermediate stage for stripping
 FROM gcc-curl as allinone-stripped
 COPY --from=python /usr/local/ /usr/local/
@@ -220,6 +231,7 @@ COPY --from=swig /usr/local/ /usr/local/
 COPY --from=autotools /usr/local/ /usr/local/
 COPY --from=hwloc /usr/local/ /usr/local/
 COPY --from=ffi /usr/local/ /usr/local/
+COPY --from=openssh /usr/local/ /usr/local/
 RUN find /usr/local ! -name '*.o' -type f -exec sh -c "file -b {} | grep -Eq '^ELF.*, not stripped' && strip {}" \;
 
 # Final stage
