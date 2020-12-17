@@ -10,6 +10,7 @@
 * <https://www.reddit.com/r/cpp/comments/hyfhy3/differences_between_old_pre_gcc6_and_newstyle/>
 * Is it possible to use clang with gfortran on Windows as on Linux ? (can be tested with msys2)
 * <https://llvm.org/docs/CMake.html>
+* <https://github.com/llvm-mirror/clang/blob/master/include/clang/Basic/X86Target.def>
 
 Roadmap:
 
