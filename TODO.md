@@ -13,7 +13,7 @@
 
 Roadmap:
 
-* Test `cpu_dispatch` `cpu_specific` on Debian Sid
+* Test `cpu_dispatch` `cpu_specific` on Debian Sid. Done ! Works !
 * Test `cpu_dispatch` `cpu_specific` on Windows 10 / MSYS2
 * Build clang 11 on Debian Squeeze
 * Test `cpu_dispatch` `cpu_specific` on Debian Squeeze
