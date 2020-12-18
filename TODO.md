@@ -12,6 +12,7 @@
 * <https://llvm.org/docs/CMake.html>
 * <https://github.com/llvm-mirror/clang/blob/master/include/clang/Basic/X86Target.def>
 * `clang -Ofast -no-integrated-as -Xassembler -adhln -target i686-pc-windows-gnu -S toto.c`
+* <https://stackoverflow.com/questions/23248989/clang-c-cross-compiler-generating-windows-executable-from-mac-os-x>
 
 Roadmap:
 
