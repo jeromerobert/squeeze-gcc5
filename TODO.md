@@ -11,6 +11,7 @@
 * Is it possible to use clang with gfortran on Windows as on Linux ? (can be tested with msys2)
 * <https://llvm.org/docs/CMake.html>
 * <https://github.com/llvm-mirror/clang/blob/master/include/clang/Basic/X86Target.def>
+* `clang -Ofast -no-integrated-as -Xassembler -adhln -target i686-pc-windows-gnu -S toto.c`
 
 Roadmap:
 
