@@ -14,9 +14,20 @@
 * `clang -Ofast -no-integrated-as -Xassembler -adhln -target i686-pc-windows-gnu -S toto.c`
 * <https://stackoverflow.com/questions/23248989/clang-c-cross-compiler-generating-windows-executable-from-mac-os-x>
 
-Roadmap:
+Roadmap (all DONE)
 
-* Test `cpu_dispatch` `cpu_specific` on Debian Sid. Done ! Works !
+* Test `cpu_dispatch` `cpu_specific` on Debian Sid.
 * Test `cpu_dispatch` `cpu_specific` on Windows 10 / MSYS2
-* Build clang 11 on Debian Squeeze
+* Build clang 11 on Debian Squeeze.
 * Test `cpu_dispatch` `cpu_specific` on Debian Squeeze
+
+Debian squeeze gcc5:
+
+```
+cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=$HOME/gcc/llvm-install \
+ -DCMAKE_BUILD_TYPE=Release \
+ -DLLVM_ENABLE_PROJECTS='clang;clang-tools-extra;libunwind;compiler-rt;lld;polly;openmp;parallel-libs;libclc' \
+  -G "Unix Makefiles" ../llvm
+```
+* Flang and libcxx require gcc >= 7
+* `clang -lm -B/usr/local -Ofast toto.c`

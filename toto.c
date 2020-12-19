@@ -8,10 +8,10 @@ static void func(double * restrict x, double* restrict y, double* restrict z) {
   }
 }
 
-__attribute__((cpu_dispatch(generic, skylake, skylake_avx512)))
+__attribute__((cpu_dispatch(generic, sandybridge, skylake, skylake_avx512)))
 void func2(double * restrict x, double* restrict y, double* restrict z);
 
-__attribute__((cpu_specific(generic, skylake, skylake_avx512)))
+__attribute__((cpu_specific(generic, sandybridge, skylake, skylake_avx512)))
 void func2(double * restrict x, double* restrict y, double* restrict z) {
   func(x, y, z);
   func(x, y, z);
