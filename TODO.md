@@ -13,7 +13,7 @@
 * <https://github.com/llvm-mirror/clang/blob/master/include/clang/Basic/X86Target.def>
 * `clang -Ofast -no-integrated-as -Xassembler -adhln -target i686-pc-windows-gnu -S toto.c`
 * <https://stackoverflow.com/questions/23248989/clang-c-cross-compiler-generating-windows-executable-from-mac-os-x>
-* `clang -v -fuse-ld=lld -L/usr/lib/gcc/x86_64-w64-mingw32/10-win32/ -Ofast -target x86_64-pc-windows-gnu toto.c`
+* `clang -v -fuse-ld=lld -L/usr/lib/gcc/x86_64-w64-mingw32/10-win32/ -Ofast -target x86_64-pc-windows-gnu -lgfortran totof.o toto.c`
 
 Roadmap (all DONE)
 

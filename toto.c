@@ -27,6 +27,8 @@ void func3(double * restrict x, double* restrict y, double* restrict z) {
   func2(x, y, z);
 }
 
+void print_hello_word_(void);
+
 int main(int argc, char * argv[]) {
   double v = atof(argv[1]);
   double v1 = cos(v);
@@ -42,4 +44,5 @@ int main(int argc, char * argv[]) {
     r += z[i];
   }
   printf("%g\n", r);
+  print_hello_word_();
 }
