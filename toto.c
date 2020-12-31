@@ -8,11 +8,20 @@ static void func(double * restrict x, double* restrict y, double* restrict z) {
   }
 }
 
-__attribute__((cpu_dispatch(generic, sandybridge, skylake, skylake_avx512)))
-void func2(double * restrict x, double* restrict y, double* restrict z);
+#if __clang_major__ >= 7
+#define CPUDISP(proto) \
+__attribute__((cpu_dispatch(generic, sandybridge, skylake, skylake_avx512))) \
+proto; \
+__attribute__((cpu_specific(generic, sandybridge, skylake, skylake_avx512))) \
+proto
+#elif __GNUC__ >= 7 && __GLIBC_MINOR__ >= 23
+#define CPUDISP(proto) \
+__attribute__((flatten)) \
+__attribute__((target_clones("default", "avx2", "fma4", "avx512f", "fma", "avx"))) \
+proto
+#endif
 
-__attribute__((cpu_specific(generic, sandybridge, skylake, skylake_avx512)))
-void func2(double * restrict x, double* restrict y, double* restrict z) {
+CPUDISP(void func2(double * restrict x, double* restrict y, double* restrict z)) {
   func(x, y, z);
   func(x, y, z);
   func(x, y, z);

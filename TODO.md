@@ -20,6 +20,7 @@
 * <https://reviews.llvm.org/D88154> : `-fveclib=libmvec`
 * <https://reviews.llvm.org/D53928>
 * for gcc: `-mveclibabi=svml`
+* `cpu_dispatch` values: <https://github.com/llvm-mirror/clang/blob/master/include/clang/Basic/X86Target.def#L308>
 
 Roadmap (all DONE)
 
