@@ -17,7 +17,7 @@ proto
 #elif __GNUC__ >= 7 && __GLIBC_MINOR__ >= 23
 #define CPUDISP(proto) \
 __attribute__((flatten)) \
-__attribute__((target_clones("default", "avx2", "fma4", "avx512f", "fma", "avx"))) \
+__attribute__((target_clones("default", "arch=sandybridge", "arch=skylake", "arch=skylake", "arch=skylake-avx512"))) \
 proto
 #endif
 
