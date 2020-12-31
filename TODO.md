@@ -14,6 +14,12 @@
 * `clang -Ofast -no-integrated-as -Xassembler -adhln -target i686-pc-windows-gnu -S toto.c`
 * <https://stackoverflow.com/questions/23248989/clang-c-cross-compiler-generating-windows-executable-from-mac-os-x>
 * `clang -v -fuse-ld=lld -L/usr/lib/gcc/x86_64-w64-mingw32/10-win32/ -Ofast -target x86_64-pc-windows-gnu -lgfortran totof.o toto.c`
+* <https://www.agner.org/optimize/#vectorclass>
+* <https://github.com/shibatch/sleef> with `-lsleefgnuabi` as `-lmvec` alternative
+* <https://bugs.llvm.org/show_bug.cgi?id=48642>
+* <https://reviews.llvm.org/D88154> : `-fveclib=libmvec`
+* <https://reviews.llvm.org/D53928>
+* for gcc: `-mveclibabi=svml`
 
 Roadmap (all DONE)
 
