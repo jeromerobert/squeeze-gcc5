@@ -1,0 +1,10 @@
+#! /bin/sh -ex
+export PATH=.:$PATH
+cexptest-clang
+cexptest-gcc
+cexptest-icc
+cexptest-icx
+cexptest-my-clang
+cexptest-my-gcc
+cexptest-my-icc
+cexptest-my-icx

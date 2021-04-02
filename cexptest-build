@@ -1,0 +1,9 @@
+gcc -static -march=native -Ofast cexptest.c -lm -o cexptest-gcc
+clang -static -march=native -Ofast cexptest.c -lm -o cexptest-clang
+icc -static -march=native -Ofast cexptest.c -lm -o cexptest-icc
+icx -static -march=native -Ofast cexptest.c -lm -o cexptest-icx
+
+gcc -DMYCEXP -static -march=native -Ofast cexptest.c -lm -o cexptest-my-gcc
+clang -DMYCEXP -static -march=native -Ofast cexptest.c -lm -o cexptest-my-clang
+icc -DMYCEXP -static -march=native -Ofast cexptest.c -lm -o cexptest-my-icc
+icx -DMYCEXP -static -march=native -Ofast cexptest.c -lm -o cexptest-my-icx
