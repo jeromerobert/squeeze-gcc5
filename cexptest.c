@@ -19,22 +19,25 @@ inline static void f(double complex * restrict a, int n) {
 }
 
 int main(int argc, char * argv[]) {
-  int size = 256*1024/16;
+  //int size = 256*1024/16;
+  int size = 9;
   double complex buf[size];
-  int niter = 1000;
+  int niter = 2000000;
   long long time = 0;
+  double complex sum = 0;
+  for(int i = 0; i < size; i++)
+    buf[i] = (1e-2 + 3e-2 * I) * (i+1.);
   for(int k = 0; k < niter; k++) {
     for(int i = 0; i < size; i++)
-      buf[i] = (1e-2 + 3e-2 * I) * (i+1.) / (k + 1.);
+      buf[i] = buf[i] / (buf[i] + 1);
     long long start = __rdtsc();
     f(buf, size);
     long long end = __rdtsc();
     //printf("%lld\n", (end-start)/size);
     time += end-start;
+    for(int i = 0; i < size; i++)
+      sum += buf[i];
   }
 
-  double complex sum = 0;
-  for(int i = 0; i < size; i++)
-    sum += buf[i];
   printf("%g %g %lld\n", creal(sum), cimag(sum), time/size/niter);
 }

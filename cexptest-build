@@ -1,9 +1,25 @@
-gcc -static -march=native -Ofast cexptest.c -lm -o cexptest-gcc
-clang -static -march=native -Ofast cexptest.c -lm -o cexptest-clang
-icc -static -march=native -Ofast cexptest.c -lm -o cexptest-icc
-icx -static -march=native -Ofast cexptest.c -lm -o cexptest-icx
+# TODO: rewrite in python with a matrix: cexp vs sincos, static vs libc2.17, sse2 vs skylake: 32 tests
+COMMON="-static -Ofast cexptest.c -lm -march=skylake-avx512"
+gcc $COMMON -o cexptest-gcc
+clang $COMMON -o cexptest-clang
+icc $COMMON -o cexptest-icc
+icx $COMMON -o cexptest-icx
 
-gcc -DMYCEXP -static -march=native -Ofast cexptest.c -lm -o cexptest-my-gcc
-clang -DMYCEXP -static -march=native -Ofast cexptest.c -lm -o cexptest-my-clang
-icc -DMYCEXP -static -march=native -Ofast cexptest.c -lm -o cexptest-my-icc
-icx -DMYCEXP -static -march=native -Ofast cexptest.c -lm -o cexptest-my-icx
+COMMON="-DMYCEXP -static -Ofast cexptest.c -lm -march=skylake-avx512"
+gcc $COMMON -o cexptest-my-gcc
+clang $COMMON -o cexptest-my-clang
+icc $COMMON -o cexptest-my-icc
+icx $COMMON -o cexptest-my-icx
+
+COMMON="-static -Ofast cexptest.c -lm"
+gcc $COMMON -o cexptest-sse2-gcc
+clang $COMMON -o cexptest-sse2-clang
+icc $COMMON -o cexptest-sse2-icc
+icx $COMMON -o cexptest-sse2-icx
+
+COMMON="-DMYCEXP -static -Ofast cexptest.c -lm"
+gcc $COMMON -o cexptest-my-sse2-gcc
+clang $COMMON -o cexptest-my-sse2-clang
+icc $COMMON -o cexptest-my-sse2-icc
+icx $COMMON -o cexptest-my-sse2-icx
+

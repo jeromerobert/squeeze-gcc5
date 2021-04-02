@@ -8,3 +8,11 @@ cexptest-my-clang
 cexptest-my-gcc
 cexptest-my-icc
 cexptest-my-icx
+cexptest-sse2-clang
+cexptest-sse2-gcc
+cexptest-sse2-icc
+cexptest-sse2-icx
+cexptest-my-sse2-clang
+cexptest-my-sse2-gcc
+cexptest-my-sse2-icc
+cexptest-my-sse2-icx
